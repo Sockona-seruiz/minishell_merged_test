@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgalaup <fgalaup@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: seruiz <seruiz@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 13:18:34 by seruiz            #+#    #+#             */
-/*   Updated: 2021/03/12 11:52:00 by fgalaup          ###   ########lyon.fr   */
+/*   Updated: 2021/03/15 14:17:07 by seruiz           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ int	ft_single_quote(char *line, int j, t_shell_command *str_struct)
 	mask[ret - j - 1] = '\0';
 	ft_fill_mask(mask, '1', ret - j - 2, str_struct);
 	ft_fill_str(line, j + 1, ret - j - 1, str_struct);
+	if (line[ret] != '\'')
+		return (ret);
 	return (ret + 1);
 }
 
@@ -106,6 +108,8 @@ int	ft_double_quote(char *line, int j, t_shell_command *str_struct)
 	mask[ret - j - 1] = '\0';
 	ft_fill_mask(mask, '2', ret - j - 2, str_struct);
 	ft_fill_str(line, j + 1, ret - j - 1, str_struct);
+	if (line[ret] != '\"')
+		return (ret);
 	return (ret + 1);
 }
 

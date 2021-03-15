@@ -6,7 +6,7 @@
 /*   By: seruiz <seruiz@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 12:10:28 by seruiz            #+#    #+#             */
-/*   Updated: 2021/03/15 14:02:29 by seruiz           ###   ########lyon.fr   */
+/*   Updated: 2021/03/15 14:20:35 by seruiz           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		ft_is_valid_var_name(t_shell_context *context, t_shell_command *command, in
 			i++;
 		}
 		printf("key = %s\n", key);
-		env_get(context, key);
+		printf("value = %s\n", env_get(context, key));
 	}
 	return (i - j);
 }
@@ -69,7 +69,7 @@ void	ft_test(t_shell_context *context, t_shell_command *command)
 	i = 0;
 	str = NULL;
 	printf("string = %s\n", command->command_string);
-	printf("mask = %s\n", command->command_mask);
+	printf("mask   = %s\n", command->command_mask);
 
 	//Calculer la taille de chaque string et ensuite la copier dans argv
 
