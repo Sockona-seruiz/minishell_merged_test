@@ -6,7 +6,7 @@
 /*   By: seruiz <seruiz@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 12:10:28 by seruiz            #+#    #+#             */
-/*   Updated: 2021/03/15 15:01:55 by seruiz           ###   ########lyon.fr   */
+/*   Updated: 2021/03/15 15:23:01 by seruiz           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int		ft_is_valid_var_name(t_shell_context *context, t_shell_command *command, in
 	int		j;
 	int		k;
 	char	*key;
+	char	*result;
 
-	(void)str;
 	j = i;
 	k = 0;
 	while ((ft_isalnum(command->command_string[i]) == 1 || command->command_string[i] == '_') && command->command_mask[i] == '0')
@@ -40,6 +40,12 @@ int		ft_is_valid_var_name(t_shell_context *context, t_shell_command *command, in
 		}
 		printf("key = %s\n", key);
 		printf("value = %s\n", env_get(context, key));
+		printf("str = %s\n", str);
+
+		result = ft_strjoin(str, (char *)env_get(context, key));
+		free(str);
+		str = result;
+
 	}
 	return (i - j);
 }
@@ -50,7 +56,7 @@ int		ft_replace_env_variable(t_shell_context *context, t_shell_command *command,
 	//char	*key;
 
 	var_len = ft_is_valid_var_name(context, command, i, str);
-	return (var_len);
+	return (var_len + 1);
 	/*
 	while (j < i)
 	{
@@ -68,7 +74,6 @@ int	ft_cpy_str(t_shell_context *context, t_shell_command *command, int i, char *
 	char	*result;
 
 	(void)context;
-	(void)str;
 	backslash = 0;
 	k = 0;
 	j = i;
@@ -92,7 +97,14 @@ int	ft_cpy_str(t_shell_context *context, t_shell_command *command, int i, char *
 		k++;
 		j++;
 	}
-	printf("s = %s\n", result);
+	if (str != NULL)
+	{
+		str = ft_strjoin(str, result);
+		free(str);
+	}
+	else
+		str = result;
+	printf("str = %s\n", str);
 	return (i);
 }
 
@@ -115,11 +127,11 @@ void	ft_test(t_shell_context *context, t_shell_command *command)
 
 	while (command->command_string[i])
 	{
-		i = ft_cpy_str(context, command, i, str);
 		if (command->command_string[i] == '$')
 			i += ft_replace_env_variable(context, command, i + 1, str);
-
-
+		else
+			i = ft_cpy_str(context, command, i, str);
+		printf("str in ft_test = %s\n", str);
 		/*
 		if (command->command_string[i] == '\\')
 		{
