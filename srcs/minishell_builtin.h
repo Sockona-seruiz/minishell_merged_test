@@ -6,7 +6,7 @@
 /*   By: seruiz <seruiz@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 14:02:51 by fgalaup           #+#    #+#             */
-/*   Updated: 2021/03/15 13:39:49 by seruiz           ###   ########lyon.fr   */
+/*   Updated: 2021/03/15 16:31:35 by seruiz           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,15 @@
 # define BUILTIN_CD		"cd"
 
 # define BUILTIN_EXIT	"exit"
+
+
+typedef struct s_cmd_treat
+{
+	char				*str;
+	struct s_cmd_treat	*next;
+}			t_cmd_treat;
+
+
 
 void	ft_test(t_shell_context *context, t_shell_command *command);
 

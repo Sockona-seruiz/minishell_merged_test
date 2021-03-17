@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fgalaup <fgalaup@student.42lyon.fr>        +#+  +:+       +#+         #
+#    By: seruiz <seruiz@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/05 14:25:53 by fgalaup           #+#    #+#              #
-#    Updated: 2021/03/15 12:21:48 by seruiz           ###   ########lyon.fr    #
+#    Updated: 2021/03/17 10:27:04 by seruiz           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRCS			=		./srcs/minishell.c \
 						./srcs/runtime/instruction/instruction_pipe.c \
 						./srcs/runtime/instruction/instruction_and.c \
 						./srcs/runtime/instruction/instruction_or.c \
+						./srcs/runtime/instruction/test.c\
 						./srcs/utilities/console.c \
 						./srcs/utilities/path.c \
 						./srcs/utilities/error.c \
@@ -35,7 +36,6 @@ SRCS			=		./srcs/minishell.c \
 						./srcs/utilities/environment_destore.c \
 						./srcs/utilities/environment_manip.c \
 						./srcs/utilities/environment.c \
-						./srcs/runtime/instruction/test.c\
 						./srcs/test/path.c
 
 HEADER_DIR		=		./srcs/
